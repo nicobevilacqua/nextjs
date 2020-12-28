@@ -1,11 +1,15 @@
-import React, { useContext } from 'react'
-import Head from 'next/head'
-import { Context } from '../ThemeContext.js'
-import Component from '../Component.js'
+import React, { useContext, useEffect } from "react";
+import Head from "next/head";
+import { Context } from "../ThemeContext.js";
+import Component from "../Component.js";
 
 export default function Home() {
-  const [, dispatch] = useContext(Context)
-  dispatch({ type: 'set', payload: 'new_cart' })
+  const [_, setName] = useContext(Context);
+
+  useEffect(() => {
+    setName("new_cart");
+  }, []);
+
   return (
     <div className="container">
       <Head>
@@ -61,7 +65,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -212,5 +216,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }

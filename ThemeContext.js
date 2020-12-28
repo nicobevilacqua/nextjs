@@ -1,19 +1,11 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useState } from "react";
 
-function Reducer(state, action) {
-    if (action.type === 'set') {
-        state.name = action.payload
-    }
-    return state
-}
-
-const initialState = {
-    name: 'normal',
-}
-
-export const Context = createContext(initialState)
+export const Context = createContext("");
 
 export function ThemeProvider({ children }) {
-    const [state, dispatch] = useReducer(Reducer, initialState)
-    return <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+  const [name, setName] = useState("normal");
+
+  return (
+    <Context.Provider value={[name, setName]}>{children}</Context.Provider>
+  );
 }
