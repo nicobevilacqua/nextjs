@@ -1,12 +1,19 @@
+import React, { useContext } from 'react'
 import Head from 'next/head'
+import { Context } from '../ThemeContext.js'
+import Component from '../Component.js'
 
 export default function Home() {
+  const [, dispatch] = useContext(Context)
+  dispatch({ type: 'set', payload: 'new_cart' })
   return (
     <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Component />
 
       <main>
         <h1 className="title">
